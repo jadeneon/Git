@@ -3,8 +3,7 @@ import streamlit as st
 from PIL import Image
 import cv2
 import pandas as pd
-
-st.title("project")
+from streamlit_gsheets import GSheetsConnection
 
 st.write("Hello second")
 my_input = st.text_input("Input a text here","default text")

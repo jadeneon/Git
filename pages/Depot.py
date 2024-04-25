@@ -3,6 +3,7 @@ import streamlit_drawable_canvas as st_canvas
 import cv2
 import pandas as pd
 import datetime
+from jadeframework import *
 
 ## Retrive database
 gsheetid = "1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc"    
@@ -14,14 +15,24 @@ Maindf = pd.read_csv(gsheet_url)
 #foreach highlighter
 
 #Header
-st.write("Depot Possessione : 你好" )
-
-
+#st.write("Depot Possession : 你好" )
+st.markdown("# Depot Possesion")
+st.markdown("### Approved Possession as date ##-Jan-24")
 #Date Picker
 today = datetime.date.today()
-st.write('Today :', today)
-select_date  = st.date_input('Start Date',value=today,min_value=today)
-st.write('Selected date :', select_date)
+
+
+#with Col2:
+#    st.write('Today :', today)
+
+Col1,Col2,Col3,Col4 = st.columns(4)
+
+with Col2:
+    workingshift = st.select_slider('Select Working Shift', options = ['Morning','Afternoon','Night'], value = ('Morning'))
+with Col1:
+    #st.write('Selected date :', select_date)
+    select_date  = Col1.date_input('Start Date',value=today,min_value=today)
+
 #to work on min/max day
 #onchange of date select
 
@@ -43,9 +54,15 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 Layout = cv2.imread("images\\Depot.PNG")
+Layout = Highlight(Layout,"TK201")
 st.image(Layout)
 
 
-#Main Table
+#Main Table shift #1
 #st.dataframe(Maindf,hide_index=True)
+testfunction()
 st.dataframe(ProcessedDF,hide_index=True)
+
+#Main table shift #2
+
+#main Table shift #3
