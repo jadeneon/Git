@@ -3,6 +3,14 @@
 import streamlit as st
 from streamlit_gsheets import GSheetsConnection
 
+st.set_page_config(
+    page_title="Announcement",
+    layout="wide",
+    page_icon = "🧊"
+    # page_icon=Hitachi_logo    
+)
+
+
 url = "https://docs.google.com/spreadsheets/d/1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc/edit?usp=sharing"
 
 conn = st.connection("gsheets", type=GSheetsConnection)
