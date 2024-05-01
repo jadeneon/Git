@@ -38,9 +38,9 @@ def set_background(png_file):
 #st.sidebar.success("select page above")
 
 st.markdown("# Announce date // 11-Dec-2023")
-#ann3 =  Image.open("images/Ann3.PNG")
+ann3 =  Image.open("images/Ann3.PNG")
 with st.container():
-    #st.image(ann3)
+    st.image(ann3)
     st.image("images\Ann1.PNG")
     st.image("images\Ann2.PNG")
     
