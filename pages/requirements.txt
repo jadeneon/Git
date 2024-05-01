@@ -2,3 +2,6 @@ opencv-python
 pandas
 gspread
 st-gsheets-connection
+base64
+numpy
+opencv-python-headless
