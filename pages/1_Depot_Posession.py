@@ -40,8 +40,8 @@ with Col2:
     selectedworkingshift = st.select_slider('Select Working Shift', options = ['Morning','Afternoon','Night'], value = ('Morning'))
 with Col1:
     #st.write('Selected date :', select_date)
-    select_date  = Col1.date_input('Start Date',value=today,min_value=today)
-
+    #select_date  = Col1.date_input('Start Date',value=today,min_value=today)    
+    select_date  = Col1.date_input('Start Date',value=today)    
 match selectedworkingshift:
     case    'Morning':
         translatedworkingshift = 'SH1'
@@ -68,7 +68,7 @@ for row_name, i in ProcessedDF.iterrows():
     row_workingshift = i['Working.Shift']
     workingShiftFilter = row_workingshift.split(",")
 
-    if select_date >= robj_startdate and select_date <= robj_enddate :
+    if select_date < robj_startdate or select_date > robj_enddate :        
         ProcessedDF = ProcessedDF.drop(row_name)
     else : 
         if translatedworkingshift not in workingShiftFilter :
@@ -77,18 +77,25 @@ for row_name, i in ProcessedDF.iterrows():
     #shiftfitering
 
 #Main layout
-    row_PowerZone = i['PowerZone']
-    workingPowerZoneFilter = row_workingshift.split(",")
+
 
 Layout = cv2.imread("images\\Depot.PNG")
-Layout = Highlight(Layout,"TK201")
-st.image(Layout)
 
+for row_name, i in ProcessedDF.iterrows():
+ row_PowerZone = i['PowerZone']
+ workingPowerZoneFilter = row_PowerZone.split(",")
+ for pow in workingPowerZoneFilter: 
+    if pow not in ('Z1','Z2','Z3','Z4','Z5','Z6','Z7','Z8') :        
+        Layout = Highlight(Layout,pow)
+
+st.image(Layout)
 
 #Main Table shift #1
 #st.dataframe(Maindf,hide_index=True)
-testfunction()
-st.dataframe(ProcessedDF,hide_index=True)
+#testfunction()
+st.markdown(" ### Approved Works List")
+#st.dataframe(ProcessedDF,hide_index=True)
+st.dataframe(ProcessedDF,hide_index=True,column_order=("Date", "Start(Area)","Start(Date)","Energization","PowerZone"))
 
 #Main table shift #2
 
