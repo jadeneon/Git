@@ -1,6 +1,4 @@
 streamlit
-numpy
-opencv-python-headless
 pandas
 gspread
 st-gsheets-connection
