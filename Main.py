@@ -38,8 +38,8 @@ set_background('images\interior.PNG')
 
 st.markdown("# Announce date // 11-Dec-2023")
 with st.container():
-    st.image("images\Ann3.PNG")
-    st.image("images\Ann1.PNG")
-    st.image("images\Ann2.PNG")
+    st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
+    #st.image("images\Ann1.PNG")
+    #st.image("images\Ann2.PNG")
     
 
