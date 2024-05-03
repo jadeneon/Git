@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import datetime
+import cv2
 from jadeframework import *
 from streamlit_gsheets import GSheetsConnection
 
