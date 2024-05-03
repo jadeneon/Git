@@ -11,7 +11,11 @@ st.set_page_config(
 )
 
 
-url = "https://docs.google.com/spreadsheets/d/1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc/edit?usp=sharing"
+st.markdown("# Weekly Announce")
+st.markdown("### Train testing and Energization Plan for week xxx ")
+st.markdown("Date : xxx to xxx")
+
+url = "https://docs.google.com/spreadsheets/d/1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc/edit?usp=sharing" 
 
 conn = st.connection("gsheets", type=GSheetsConnection)
 

@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+from PIL import Image
 
 st.set_page_config(
     page_title="TCO Dashboard",
@@ -29,7 +30,7 @@ def set_background(png_file):
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-set_background('images\interior.PNG')
+#set_background('images\interior.PNG')
 
 #print ("perfect") #console print
 #st.title("MainPage")
@@ -37,6 +38,7 @@ set_background('images\interior.PNG')
 #st.sidebar.success("select page above")
 
 st.markdown("# Announce date // 11-Dec-2023")
+ann3 =  Image.open("images\Ann3.PNG")
 with st.container():
     st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
     #st.image("images\Ann1.PNG")
