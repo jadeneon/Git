@@ -79,7 +79,7 @@ for row_name, i in ProcessedDF.iterrows():
 #Main layout
 
 
-Layout = cv2.imread("images\\Depot.PNG")
+Layout = cv2.imread("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
