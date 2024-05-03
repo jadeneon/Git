@@ -4,5 +4,4 @@ gspread
 st-gsheets-connection
 numpy
 opencv-python-headless
-pillow
 pybase64
