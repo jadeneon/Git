@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import datetime
 import cv2
+import numpy as np
+import urllib.request
 from PIL import Image
 from jadeframework import *
 
@@ -79,7 +81,14 @@ for row_name, i in ProcessedDF.iterrows():
 #Main layout
 
 
-Layout = cv2.imread("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
+#Layout = cv2.imread("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
+#url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F03%2F10%2F343179-landscape-nature.jpg"
+
+#url_response = urllib.request.urlopen("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
+url_response = urllib.request.urlopen("https://jnnprogress.com/Site/Home_files/banner.jpg")
+
+img = cv2.imdecode(np.array(bytearray(url_response.read()), dtype=np.uint8), -1)
+
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
