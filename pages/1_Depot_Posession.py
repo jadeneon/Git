@@ -3,7 +3,6 @@ import pandas as pd
 import datetime
 import cv2
 from jadeframework import *
-from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(
     page_title="Depot Possesion",
