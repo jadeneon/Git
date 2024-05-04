@@ -41,12 +41,16 @@ def set_background(png_file):
 #st.title("MainPage")
 
 #st.sidebar.success("select page above")
+testimage = cv2.imread(r'images\Ann2.PNG')
+
+#st.image(testimage)
+cv2.imshow('image',testimage)
 
 st.markdown("# Announce date // 11-Dec-2023 test")
 #ann3 =  Image.open("images\Ann3.PNG")
 
 with st.container():
-    st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
+    #st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
     st.image("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
     #st.image("images\Ann2.PNG")
     

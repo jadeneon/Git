@@ -2,9 +2,12 @@ import streamlit as st
 import pandas as pd
 import datetime
 import cv2
+import requests
 import numpy as np
 import urllib.request
-from PIL import Image
+import urllib
+import PIL
+import io
 from jadeframework import *
 
 st.set_page_config(
@@ -80,20 +83,20 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
+url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
+resp = requests.get(url, stream=True).raw
+#resp = urllib.urlopen(url)
+image = np.asarray(bytearray(resp.read()), dtype="uint8")
+Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
-#Layout = cv2.imread("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
-#url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F03%2F10%2F343179-landscape-nature.jpg"
-
-#url_response = urllib.request.urlopen("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
-url_response = urllib.request.urlopen("https://jnnprogress.com/Site/Home_files/banner.jpg")
-
-img = cv2.imdecode(np.array(bytearray(url_response.read()), dtype=np.uint8), -1)
-
+# for testing
+#cv2.imshow('image',image)
+st.image(Layout)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
  workingPowerZoneFilter = row_PowerZone.split(",")
- for pow in workingPowerZoneFilter: 
+ for pow in workingPowerZoneFilter:
     if pow not in ('Z1','Z2','Z3','Z4','Z5','Z6','Z7','Z8') :        
         Layout = Highlight(Layout,pow)
 
