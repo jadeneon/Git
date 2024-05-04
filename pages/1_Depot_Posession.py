@@ -91,7 +91,7 @@ Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
 
 # for testing
 #cv2.imshow('image',image)
-st.image(Layout)
+st.image(Layout,output_format="PNG")
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
