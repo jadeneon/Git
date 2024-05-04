@@ -3,6 +3,8 @@ import base64
 from PIL import Image
 import pandas as pd
 import cv2
+import urllib
+import numpy
 from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(
@@ -42,11 +44,10 @@ def set_background(png_file):
 
 st.markdown("# Announce date // 11-Dec-2023 test")
 #ann3 =  Image.open("images\Ann3.PNG")
-Layout = cv2.imread("images\Ann1.PNG")
-cv2.imshow("name", Layout)
+
 with st.container():
     st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
-    #st.image("images\Ann1.PNG")
+    st.image("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
     #st.image("images\Ann2.PNG")
     
 
