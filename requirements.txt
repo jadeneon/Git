@@ -1,5 +1,4 @@
 streamlit
-pandas
 gspread
 st-gsheets-connection
 pybase64

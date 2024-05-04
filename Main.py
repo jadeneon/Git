@@ -1,6 +1,7 @@
 import streamlit as st
 import base64
 from PIL import Image
+import pandas as pd
 
 st.set_page_config(
     page_title="TCO Dashboard",
