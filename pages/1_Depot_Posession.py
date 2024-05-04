@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 import cv2
+from PIL import Image
 from jadeframework import *
 
 st.set_page_config(
