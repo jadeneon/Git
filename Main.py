@@ -42,6 +42,7 @@ def set_background(png_file):
 
 st.markdown("# Announce date // 11-Dec-2023 test")
 #ann3 =  Image.open("images\Ann3.PNG")
+Layout = cv2.imread("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
 with st.container():
     st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
     #st.image("images\Ann1.PNG")
