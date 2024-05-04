@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 from PIL import Image
 import pandas as pd
+import cv2
 from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(
