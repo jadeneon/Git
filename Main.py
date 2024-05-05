@@ -41,16 +41,16 @@ def set_background(png_file):
 
 #st.sidebar.success("select page above")
 #testimage = cv2.imread(r'images\Ann2.PNG')
-imagi = Image.open(r'images/Ann2.PNG')
-numpydata = numpy.asarray(imagi)
-startpoint = (20,207)
-endpoint = (210,207)
-color = (255,255,0)
-thickness = 2
-photo = numpydata.copy()
-photo.setflags(write=1)
-cv2.line(photo, startpoint , endpoint  , color , thickness )
-st.image(photo)
+#imagi = Image.open(r'images/Ann2.PNG')
+#numpydata = numpy.asarray(imagi)
+#startpoint = (20,207)
+#endpoint = (210,207)
+#color = (255,255,0)
+#thickness = 2
+#photo = numpydata.copy()
+#photo.setflags(write=1)
+#cv2.line(photo, startpoint , endpoint  , color , thickness )
+#st.image(photo)
 
 
 st.markdown("# Announce date // 11-Dec-2023 test")
