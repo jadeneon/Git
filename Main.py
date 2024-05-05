@@ -44,9 +44,8 @@ background_image = """
     background-repeat: no-repeat;
     opacity:0.5;
 }
-[data-testid="stHeader"]{
-    background-color : rgba(0,0,0,0);
-
+[data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
+[data-testid="stStatusWidget"] { visibility: hidden;}
 }
 
 </style>
