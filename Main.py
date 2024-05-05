@@ -37,19 +37,30 @@ def set_background(png_file):
 
 background_image = """
 <style>
-[data-testid="stAppViewContainer"] > .main::before {    
-    background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+[data-testid="stAppViewContainer"] > .main {    
+    background-image: url('images/ann3.PNG');
     background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
     background-position: center;  
     background-repeat: no-repeat;
     opacity:0.5;
 }
+[data-testid="stHeader"]{
+    background-color : rgba(0,0,0,0);
+
+}
+
 </style>
 """
 
 init_page =     """
     <style>
-    .stApp [data-testid="stToolbar"] {display:none;}
+    .block-container {
+                    padding-top: 0rem;
+                    padding-bottom: 0rem;
+                    padding-left: 5rem;
+                    padding-right: 5rem;
+                }
+    .stApp [data-testid="stSidebarNavLink"] { padding-top: 0rem;}
     .reportview-container {margin-top: -2em;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
@@ -57,9 +68,19 @@ init_page =     """
     </style>    
     """
 
+init_sidebar = """
+    <style>
+    .st-emotion-cache-1oe5cao.eczjsme9 {
+      margin-top: -50px;      
+    }
+    </style>
+"""
 
+
+st.markdown(init_sidebar, unsafe_allow_html=True)
 st.markdown(init_page, unsafe_allow_html=True)
 st.markdown(background_image, unsafe_allow_html=True)
+st.sidebar.title("Hitachi TCO &copy;")
 
 opacity = """
 <style>
