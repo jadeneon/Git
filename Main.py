@@ -58,7 +58,7 @@ init_page =     """
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     .stDeployButton {visibility: hidden;}
-    .st
+    .stToolbar {visibility: hidden;}
     </style>    
     """
 
