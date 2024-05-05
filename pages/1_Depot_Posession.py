@@ -87,20 +87,20 @@ for row_name, i in ProcessedDF.iterrows():
 url = 'https://www.jnnprogress.com/Site/gtest.png'
 #url = 'https://img.creative.com/images/products/large/pdt_23968.png'
 #url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
-resp = requests.get(url)
-img = BytesIO(resp.content)
-img = Image.open(img)
+#resp = requests.get(url)
+#img = BytesIO(resp.content)
+#img = Image.open(img)
 #img = Image.open('images\Ann2.PNG')
-img2 = img.copy()
+#img2 = img.copy()
 #resp = urllib.urlopen(url)
 #image = np.asarray(bytearray(resp.read()), dtype="uint8")
 #Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
 #Layout = cv2.cvtColor(Layout, cv2.COLOR_BGR2RGB)
 #Layout = Image.open(resp)
-
+Layout = cv2.imread("./images/Depot.PNG")
 # for testing
 #cv2.imshow('image',image)
-st.image(img)
+st.image(Layout)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
