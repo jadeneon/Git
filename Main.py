@@ -48,8 +48,6 @@ background_image = """
 [data-testid="stAppViewContainer"] > .main::after {    opacity:1;
 }
 [data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
-
-
 }
 
 </style>
@@ -75,7 +73,11 @@ init_sidebar = """
     .st-emotion-cache-1nm2qww.eczjsme2 {
       margin-top: -50px;      
     }
-    [data-testid='stSidebarNavItems'] { min-height: 60vh; }
+    [data-testid='stSidebarNavItems'] { 
+        padding-top: 0rem;
+        margin-top: -50px; 
+        min-height: 60vh; 
+    }
     </style>
 """
 
