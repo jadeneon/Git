@@ -75,20 +75,14 @@ init_sidebar = """
     .st-emotion-cache-1nm2qww.eczjsme2 {
       margin-top: -50px;      
     }
+    [data-testid='stSidebarNav'] { min-height: 60vh; }
     </style>
 """
+
 st.markdown(init_sidebar, unsafe_allow_html=True)
 st.markdown(init_page, unsafe_allow_html=True)
 st.markdown(background_image, unsafe_allow_html=True)
 st.sidebar.title("Hitachi TCO &copy;")
-
-opacity = """
-<style>
-[data-testid="stAppViewContainer"] > .main {        
-    opacity:1;
-}
-</style>
-"""
 
 #st.markdown(opacity, unsafe_allow_html=True)
 st.markdown("# Welcome to Sanying Possession Plan")
