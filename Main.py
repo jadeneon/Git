@@ -45,7 +45,8 @@ background_image = """
     opacity:0.5;
 }
 [data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
-[data-testid="stStatusWidget"] { visibility: hidden;}
+
+.st-emotion-cache-zq5wmm.ezrtsby0 { visibility: hidden;}
 }
 
 </style>
