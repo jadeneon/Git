@@ -97,7 +97,7 @@ img2 = img.copy()
 
 # for testing
 #cv2.imshow('image',image)
-st.image(img2)
+st.image(img)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
