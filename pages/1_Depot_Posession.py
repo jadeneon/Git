@@ -88,6 +88,7 @@ for row_name, i in ProcessedDF.iterrows():
 url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
 resp = requests.get(url)
 img = Image.open(BytesIO(resp.content))
+img2 = img.copy()
 #resp = urllib.urlopen(url)
 #image = np.asarray(bytearray(resp.read()), dtype="uint8")
 #Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
@@ -96,7 +97,7 @@ img = Image.open(BytesIO(resp.content))
 
 # for testing
 #cv2.imshow('image',image)
-st.image(img)
+st.image(img2)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
