@@ -75,12 +75,10 @@ init_sidebar = """
     }
     </style>
 """
-
-
 st.markdown(init_sidebar, unsafe_allow_html=True)
 st.markdown(init_page, unsafe_allow_html=True)
 st.markdown(background_image, unsafe_allow_html=True)
-st.sidebar.title("Hitachi TCO &copy;")
+st.sidebar.title("Hitachi TCOa &copy;")
 
 opacity = """
 <style>
