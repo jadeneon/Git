@@ -5,7 +5,6 @@ import pandas as pd
 import cv2
 import urllib
 import numpy
-from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(
     page_title="TCO Dashboard",
