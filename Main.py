@@ -46,7 +46,7 @@ background_image = """
 }
 [data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
 
-.st-emotion-cache-zq5wmm.ezrtsby0 { visibility: hidden;}
+
 }
 
 </style>
@@ -59,12 +59,16 @@ init_page =     """
     footer {visibility: hidden;}
     .stDeployButton {visibility: hidden;}
     .stToolbar {visibility: hidden;}
+    .st-emotion-cache-zq5wmm.ezrtsby0 { visibility: hidden;}
     </style>    
     """
 
 init_sidebar = """
     <style>
     .st-emotion-cache-1oe5cao.eczjsme9 {
+      margin-top: -50px;      
+    }
+    .st-emotion-cache-1nm2qww.eczjsme2 {
       margin-top: -50px;      
     }
     </style>
