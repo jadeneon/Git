@@ -83,7 +83,7 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
-url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
+url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
 resp = requests.get(url, stream=True).raw
 #resp = urllib.urlopen(url)
 image = np.asarray(bytearray(resp.read()), dtype="uint8")
