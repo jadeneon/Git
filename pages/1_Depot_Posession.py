@@ -84,11 +84,11 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
-#url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
+url = 'https://www.jnnprogress.com/Site/Hitachi/images/depot.png'
 #url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
 resp = requests.get(url)
-#img = Image.open(BytesIO(resp.content))
-img = Image.open('images\Ann2.PNG')
+img = Image.open(BytesIO(resp.content))
+#img = Image.open('images\Ann2.PNG')
 img2 = img.copy()
 #resp = urllib.urlopen(url)
 #image = np.asarray(bytearray(resp.read()), dtype="uint8")
