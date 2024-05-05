@@ -83,15 +83,16 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
-url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
+url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
 resp = requests.get(url, stream=True).raw
 #resp = urllib.urlopen(url)
 image = np.asarray(bytearray(resp.read()), dtype="uint8")
 Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
+Layout = cv2.cvtColor(Layout, cv2.COLOR_BGR2RGB)
 
 # for testing
-#cv2.imshow('image',image)
-st.image(Layout,output_format="PNG")
+cv2.imshow('image',image)
+#st.image(Layout)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
