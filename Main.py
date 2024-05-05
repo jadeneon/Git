@@ -41,7 +41,7 @@ def set_background(png_file):
 
 #st.sidebar.success("select page above")
 #testimage = cv2.imread(r'images\Ann2.PNG')
-imagi = Image.open(r'images\Ann2.PNG')
+imagi = Image.open(r'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG')
 numpydata = numpy.asarray(imagi)
 startpoint = (20,207)
 endpoint = (210,207)
