@@ -40,10 +40,18 @@ def set_background(png_file):
 #st.title("MainPage")
 
 #st.sidebar.success("select page above")
-testimage = cv2.imread(r'images\Ann2.PNG')
+#testimage = cv2.imread(r'images\Ann2.PNG')
+imagi = Image.open(r'images\Ann2.PNG')
+numpydata = numpy.asarray(imagi)
+startpoint = (20,207)
+endpoint = (210,207)
+color = (255,255,0)
+thickness = 2
+photo = numpydata.copy()
+photo.setflags(write=1)
+cv2.line(photo, startpoint , endpoint  , color , thickness )
+st.image(photo)
 
-#st.image(testimage)
-cv2.imshow('image',testimage)
 
 st.markdown("# Announce date // 11-Dec-2023 test")
 #ann3 =  Image.open("images\Ann3.PNG")

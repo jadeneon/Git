@@ -1,3 +1,4 @@
+import PIL.Image
 import streamlit as st
 import pandas as pd
 import datetime
@@ -6,9 +7,9 @@ import requests
 import numpy as np
 import urllib.request
 import urllib
-import PIL
-import io
+from io import BytesIO
 from jadeframework import *
+from PIL import Image
 
 st.set_page_config(
     page_title="Depot Possesion",
@@ -83,16 +84,19 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
+#url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
 url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
-resp = requests.get(url, stream=True).raw
+resp = requests.get(url)
+img = Image.open(BytesIO(resp.content))
 #resp = urllib.urlopen(url)
-image = np.asarray(bytearray(resp.read()), dtype="uint8")
-Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
+#image = np.asarray(bytearray(resp.read()), dtype="uint8")
+#Layout = cv2.imdecode(image, cv2.IMREAD_COLOR)
 #Layout = cv2.cvtColor(Layout, cv2.COLOR_BGR2RGB)
+#Layout = Image.open(resp)
 
 # for testing
-cv2.imshow('image',image)
-#st.image(Layout)
+#cv2.imshow('image',image)
+st.image(img)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
