@@ -54,7 +54,7 @@ def set_background(png_file):
 
 
 st.markdown("# Announce date // 11-Dec-2023 test")
-ann3 =  Image.open("./images/Ann3.png")
+ann3 =  Image.open("./images/ann3.png")
 
 with st.container():
     #st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
