@@ -37,12 +37,14 @@ def set_background(png_file):
 
 background_image = """
 <style>
-[data-testid="stAppViewContainer"] > .main {    
+[data-testid="stAppViewContainer"] > .main::before {    
     background-image: url('https://images.unsplash.com/photo-1714756034183-42581eacfb05?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
     background-position: center;  
     background-repeat: no-repeat;
     opacity:0.5;
+}
+[data-testid="stAppViewContainer"] > .main::after {    opacity:1;
 }
 [data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
 
@@ -60,6 +62,7 @@ init_page =     """
     .stDeployButton {visibility: hidden;}
     .stToolbar {visibility: hidden;}
     .st-emotion-cache-zq5wmm.ezrtsby0 { visibility: hidden;}
+    [data-testid="manage-app-button"] { visibility: hidden;}
     </style>    
     """
 
