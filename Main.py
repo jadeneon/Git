@@ -74,8 +74,7 @@ init_sidebar = """
       margin-top: -50px;      
     }
     [data-testid='stSidebarNavItems'] { 
-        padding-top: 0rem;
-        margin-top: -50px; 
+        padding-top: 0rem;        
         min-height: 60vh; 
     }
     </style>
