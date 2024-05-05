@@ -84,7 +84,7 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
-url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
+#url = 'https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG'
 #url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
 resp = requests.get(url)
 #img = Image.open(BytesIO(resp.content))
