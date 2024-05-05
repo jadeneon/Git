@@ -39,7 +39,7 @@ def set_background(png_file):
 background_image = """
 <style>
 [data-testid="stAppViewContainer"] > .main {    
-    background-image: url('https://jnnprogress.com/Site/depot.png');
+    background-image: url('../image/ann3.PNG');
     background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
     background-position: center;  
     background-repeat: no-repeat;
