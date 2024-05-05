@@ -75,7 +75,7 @@ init_sidebar = """
     .st-emotion-cache-1nm2qww.eczjsme2 {
       margin-top: -50px;      
     }
-    [data-testid='stSidebarNav'] { min-height: 60vh; }
+    [data-testid='stSidebarNavItems'] { min-height: 60vh; }
     </style>
 """
 
