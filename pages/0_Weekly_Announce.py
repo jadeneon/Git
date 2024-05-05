@@ -12,12 +12,15 @@ st.set_page_config(
 
 
 st.markdown("# Weekly Announce")
-st.markdown("### Train testing and Energization Plan for week xxx ")
+st.markdown("### Train testing/Energization/Shutdown Plan for week xxx ")
 st.markdown("Date : xxx to xxx")
 
-url = "https://docs.google.com/spreadsheets/d/1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc/edit?usp=sharing" 
+st.markdown("# Controlled Area ")
 
-conn = st.connection("gsheets", type=GSheetsConnection)
 
-data = conn.read(spreadsheet=url)
-st.dataframe(data)
+
+st.markdown("# Train Testing / Energization Plan")
+
+st.markdown(" # Shutdown  Plan ")
+
+

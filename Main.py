@@ -14,6 +14,7 @@ st.set_page_config(
 )
 
 
+
 def get_base64(bin_file):
     with open(bin_file, 'rb') as f:
         data = f.read()
@@ -34,31 +35,48 @@ def set_background(png_file):
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-#set_background('images\interior.PNG')
+background_image = """
+<style>
+[data-testid="stAppViewContainer"] > .main::before {    
+    background-image: url("https://images.unsplash.com/photo-1542281286-9e0a16bb7366");
+    background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
+    background-position: center;  
+    background-repeat: no-repeat;
+    opacity:0.5;
+}
+</style>
+"""
 
-#print ("perfect") #console print
-#st.title("MainPage")
-
-#st.sidebar.success("select page above")
-#testimage = cv2.imread(r'images\Ann2.PNG')
-#imagi = Image.open(r'images/Ann2.PNG')
-#numpydata = numpy.asarray(imagi)
-#startpoint = (20,207)
-#endpoint = (210,207)
-#color = (255,255,0)
-#thickness = 2
-#photo = numpydata.copy()
-#photo.setflags(write=1)
-#cv2.line(photo, startpoint , endpoint  , color , thickness )
-#st.image(photo)
+init_page =     """
+    <style>
+    .stApp [data-testid="stToolbar"] {display:none;}
+    .reportview-container {margin-top: -2em;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {visibility: hidden;}
+    </style>    
+    """
 
 
-st.markdown("# Announce date // 11-Dec-2023 test")
-ann3 =  Image.open("./images/ann3.PNG")
+st.markdown(init_page, unsafe_allow_html=True)
+st.markdown(background_image, unsafe_allow_html=True)
 
-with st.container():
+opacity = """
+<style>
+[data-testid="stAppViewContainer"] > .main {        
+    opacity:1;
+}
+</style>
+"""
+
+#st.markdown(opacity, unsafe_allow_html=True)
+st.markdown("# Welcome to Sanying Possession Plan")
+#ann3 =  Image.open("./images/ann3.PNG")
+#set_background("./images/ann3.PNG")
+#set_background("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
+
+#with st.container():
     #st.image("https://jnnprogress.com/Site/Home_files/banner.jpg")
-    st.image("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")
-    st.image(ann3)
+    #st.image("https://www.jnnprogress.com/Site/Hitachi/images/Depot.PNG")    
     
 

@@ -61,6 +61,7 @@ match selectedworkingshift:
 
 #Filtering
 #df2 = df[df['Cat1'] == filterdata]
+
 ProcessedDF = Maindf
 for row_name, i in ProcessedDF.iterrows():
     #date filtering     
@@ -84,12 +85,12 @@ for row_name, i in ProcessedDF.iterrows():
 
 #Main layout
 
-url = 'https://www.jnnprogress.com/Site/gtest.png'
+#url = 'https://www.jnnprogress.com/Site/gtest.png'
 #url = 'https://img.creative.com/images/products/large/pdt_23968.png'
 #url = 'https://www.google.co.th/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png'
-resp = requests.get(url)
-img = BytesIO(resp.content)
-#img = Image.open(img)
+#resp = requests.get(url)
+#img = BytesIO(resp.content)
+#img2 = Image.open(img)
 #img = Image.open('images\Ann2.PNG')
 #img2 = img.copy()
 #resp = urllib.urlopen(url)
