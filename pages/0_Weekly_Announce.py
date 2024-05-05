@@ -1,7 +1,6 @@
 # example/st_app.py
 
 import streamlit as st
-from streamlit_gsheets import GSheetsConnection
 
 st.set_page_config(
     page_title="Announcement",
@@ -14,13 +13,8 @@ st.set_page_config(
 st.markdown("# Weekly Announce")
 st.markdown("### Train testing/Energization/Shutdown Plan for week xxx ")
 st.markdown("Date : xxx to xxx")
-
 st.markdown("# Controlled Area ")
-
-
-
 st.markdown("# Train Testing / Energization Plan")
-
 st.markdown(" # Shutdown  Plan ")
 
 

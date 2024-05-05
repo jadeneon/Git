@@ -2,4 +2,5 @@ streamlit
 gspread
 pybase64
 numpy
+
 opencv-python-headless
