@@ -54,17 +54,11 @@ background_image = """
 
 init_page =     """
     <style>
-    .block-container {
-                    padding-top: 0rem;
-                    padding-bottom: 0rem;
-                    padding-left: 5rem;
-                    padding-right: 5rem;
-                }
-    .stApp [data-testid="stSidebarNavLink"] { padding-top: 0rem;}
-    .reportview-container {margin-top: -2em;}
+    .block-container { padding-top: 0rem;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     .stDeployButton {visibility: hidden;}
+    .st
     </style>    
     """
 
@@ -78,7 +72,7 @@ init_sidebar = """
 st.markdown(init_sidebar, unsafe_allow_html=True)
 st.markdown(init_page, unsafe_allow_html=True)
 st.markdown(background_image, unsafe_allow_html=True)
-st.sidebar.title("Hitachi TCOa &copy;")
+st.sidebar.title("Hitachi TCO &copy;")
 
 opacity = """
 <style>
