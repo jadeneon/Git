@@ -66,15 +66,9 @@ init_page =     """
     """
 
 init_sidebar = """
-    <style>
-    .st-emotion-cache-1oe5cao.eczjsme9 {
-      margin-top: -50px;      
-    }
-    .st-emotion-cache-1nm2qww.eczjsme2 {
-      margin-top: -50px;      
-    }
-    [data-testid='stSidebarNavItems'] { 
-        padding-top: 5rem;        
+    <style>    
+    [data-testid='stSidebarNavItems'] {                 
+        margin-top: -50px;
         min-height: 60vh; 
     }
     </style>
