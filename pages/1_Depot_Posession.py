@@ -98,9 +98,6 @@ url = 'https://img.creative.com/images/products/large/pdt_23968.png'
 #Layout = cv2.cvtColor(Layout, cv2.COLOR_BGR2RGB)
 #Layout = Image.open(resp)
 Layout = cv2.imread("./images/Depot.PNG")
-# for testing
-#cv2.imshow('image',image)
-st.image(Layout)
 
 for row_name, i in ProcessedDF.iterrows():
  row_PowerZone = i['PowerZone']
