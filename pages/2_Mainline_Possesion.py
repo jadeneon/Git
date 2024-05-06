@@ -28,5 +28,5 @@ st.sidebar.title("Hitachi TCO &copy;")
 st.sidebar.image("./images/hitachi.png")
 
 
-st.markdown("# Train Location underdevelopment")
+st.markdown("# Mainline under evelopment")
 
