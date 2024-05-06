@@ -18,6 +18,33 @@ st.set_page_config(
     # page_icon=Hitachi_logo    
 )
 
+init_page =     """
+    <style>
+    .block-container { padding-top: 0rem;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    .stDeployButton {visibility: hidden;}
+    .stToolbar {visibility: hidden;}
+    .st-emotion-cache-zq5wmm.ezrtsby0 { visibility: hidden;}
+    [data-testid="manage-app-button"] { visibility: hidden;}
+    </style>    
+    """
+
+init_sidebar = """
+    <style>    
+    [data-testid='stSidebarNavItems'] {                 
+        margin-top: -50px;
+        min-height: 60vh; 
+    }
+    </style>
+"""
+
+st.markdown(init_sidebar, unsafe_allow_html=True)
+st.markdown(init_page, unsafe_allow_html=True)
+st.sidebar.title("Hitachi TCO &copy;")
+st.sidebar.image("./images/hitachi.png")
+
+
 ## Method#1, Retrive database
 gsheetid = "1J8RjbrDw86ubi6BDnE_t2-XgxkpmgI8I1U4bN3GmEgc"    
 sheet_name = "Possession"
