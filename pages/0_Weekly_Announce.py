@@ -6,6 +6,7 @@ import requests
 import base64
 from pathlib import Path
 
+
 def open_pdf_from_url(url):
     response = requests.get(url)
     if response.status_code == 200:
@@ -53,17 +54,20 @@ st.markdown("# Weekly Announce for week xxx")
 st.markdown("Date : xxx to xxx")
 st.markdown("# Controlled Area ")
 
-headers = {'User-Agent': 'Mozilla/5.0 (X11; Windows; Windows x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36'}
+#headers = {'User-Agent': 'Mozilla/5.0 (X11; Windows; Windows x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36'}
 
-url = 'https://jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf'
+#url = 'https://www.jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf'
+
+urla = 'https://www.ti.com/lit/ds/symlink/lm741.pdf'
 #response = requests.get(url=url, headers=headers, timeout=120)
 #on_fly_mem_obj = io.BytesIO(response.content)
 #pdf_file = PdfReader(on_fly_mem_obj)
-
-pdf_bytes = open_pdf_from_url(url)
-if pdf_bytes :
-                st.write(pdf_bytes.getvalue())
-                st.markdown(f'<embed src="data:application/pdf;base64,{pdf_bytes.getvalue().decode("utf-8")}" width="700" height="1000" type="application/pdf">', unsafe_allow_html=True)
+pdf_bytes = open_pdf_from_url(urla)
+if pdf_bytes:                
+            #st.write(pdf_bytes.getvalue())            
+            #st.write(pdf_bytes, format="pdf")
+            #st.markdown(f'<embed src="data:application/pdf;base64,{pdf_bytes.getvalue().decode("utf-8")}" width="700" height="1000" type="application/pdf">', unsafe_allow_html=True)            
+            st.markdown(f'<iframe src="{urla}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
 else:
             st.warning("Please enter a valid URL.")
 
