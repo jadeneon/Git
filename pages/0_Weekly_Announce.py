@@ -3,7 +3,6 @@
 import streamlit as st
 from io import BytesIO
 import requests
-from PyPDF2 import PdfReader
 import base64
 from pathlib import Path
 
