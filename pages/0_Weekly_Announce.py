@@ -10,8 +10,7 @@ st.set_page_config(
 )
 
 
-st.markdown("# Weekly Announce")
-st.markdown("### Train testing/Energization/Shutdown Plan for week xxx ")
+st.markdown("# Weekly Announce for week xxx")
 st.markdown("Date : xxx to xxx")
 st.markdown("# Controlled Area ")
 st.markdown("# Train Testing / Energization Plan")
