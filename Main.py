@@ -43,7 +43,6 @@ background_image = """
     background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
     background-position: center;  
     background-repeat: no-repeat;
-    opacity:0.5;
 }
 [data-testid="stAppViewContainer"] > .main::after {    opacity:1;
 }
@@ -82,6 +81,11 @@ st.sidebar.image("./images/hitachi.png")
 
 #st.markdown(opacity, unsafe_allow_html=True)
 st.markdown("# Welcome to Sanying Possession Plan")
+
+st.error("TCO contact number : ")
+
+st.warning("Becareful of earthquake in taipei enjoy; find update image below")
+
 #ann3 =  Image.open("./images/ann3.PNG")
 #set_background("./images/ann3.PNG")
 #set_background("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")
