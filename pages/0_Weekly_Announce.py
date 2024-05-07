@@ -65,9 +65,7 @@ response = requests.get(url=url, headers=headers, timeout=120)
 #st.write(response.text)
 st.markdown(f'<iframe src="{url}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
             
-#pdf_file = PdfReader(on_fly_mem_obj)
 pdf_bytes = open_pdf_from_url(url)
-#st.markdown(f'<embed src="data:application/pdf;base64,{pdf_bytes.getvalue().decode("utf-8")}" width="700" height="1000" type="application/pdf">', unsafe_allow_html=True)            
 
 st.write(pdf_bytes)
 if pdf_bytes:                
