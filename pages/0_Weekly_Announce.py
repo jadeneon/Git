@@ -5,6 +5,7 @@ from io import BytesIO
 import requests
 import base64
 from pathlib import Path
+import io
 
 
 def open_pdf_from_url(url):
@@ -54,20 +55,26 @@ st.markdown("# Weekly Announce for week xxx")
 st.markdown("Date : xxx to xxx")
 st.markdown("# Controlled Area ")
 
-#headers = {'User-Agent': 'Mozilla/5.0 (X11; Windows; Windows x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36'}
+headers = {'User-Agent': 'Mozilla/5.0 (X11; Windows; Windows x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36'}
 
-#url = 'https://www.jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf'
+url = 'https://www.jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf#toolbar=0&navpanes=0'
 
-urla = 'https://www.ti.com/lit/ds/symlink/lm741.pdf'
-#response = requests.get(url=url, headers=headers, timeout=120)
+#urla = 'https://www.ti.com/lit/ds/symlink/lm741.pdf'
+response = requests.get(url=url, headers=headers, timeout=120)
 #on_fly_mem_obj = io.BytesIO(response.content)
+#st.write(response.text)
+st.markdown(f'<iframe src="{url}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
+            
 #pdf_file = PdfReader(on_fly_mem_obj)
-pdf_bytes = open_pdf_from_url(urla)
+pdf_bytes = open_pdf_from_url(url)
+#st.markdown(f'<embed src="data:application/pdf;base64,{pdf_bytes.getvalue().decode("utf-8")}" width="700" height="1000" type="application/pdf">', unsafe_allow_html=True)            
+
+st.write(pdf_bytes)
 if pdf_bytes:                
             #st.write(pdf_bytes.getvalue())            
             #st.write(pdf_bytes, format="pdf")
             #st.markdown(f'<embed src="data:application/pdf;base64,{pdf_bytes.getvalue().decode("utf-8")}" width="700" height="1000" type="application/pdf">', unsafe_allow_html=True)            
-            st.markdown(f'<iframe src="{urla}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
+            st.markdown(f'<iframe src="{url}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
 else:
             st.warning("Please enter a valid URL.")
 
