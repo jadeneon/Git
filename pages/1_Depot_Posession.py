@@ -18,6 +18,7 @@ st.set_page_config(
     # page_icon=Hitachi_logo    
 )
 
+
 init_page =     """
     <style>
     .block-container { padding-top: 0rem;}
