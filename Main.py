@@ -39,14 +39,11 @@ def set_background(png_file):
 background_image = """
 <style>
 [data-testid="stAppViewContainer"] > .main {    
-    background-image: url('../image/ann3.PNG');
-    background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
+    background-image: url('https://www.jnnprogress.com/Site/Hitachi/images/ann1.PNG');
+    background-size: 100vw 100vh;  
     background-position: center;  
     background-repeat: no-repeat;
-}
-[data-testid="stAppViewContainer"] > .main::after {    opacity:1;
-}
-[data-testid="stHeader"]{ background-color : rgba(0,0,0,0);}
+    background: rgba(0,0,0,0.7);
 }
 
 </style>
