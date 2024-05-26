@@ -82,9 +82,9 @@ with st.form("Modify train loc",clear_on_submit=True):
 Layout = cv2.imread("./images/TrainLoc.PNG")
 trainicon = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
 
-trainicon = add_text_to_image(trainicon,'XXX',(60,90))
+#trainicon = add_text_to_image(trainicon,'XXX',(60,90))
 #Layout= add_text_to_image(Layout,'101',(100,100))
-trainicon = resize_image(trainicon,45)
+#trainicon = resize_image(trainicon,45)
 
 
 if trainicon.shape[2] == 4:
