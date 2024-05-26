@@ -2,6 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 from jadeframework import *
+import pandas as pd
 
 st.set_page_config(
     page_title="TCO Train Location",
@@ -76,6 +77,31 @@ with st.form("Modify train loc",clear_on_submit=True):
             st.write("")
             st.write("")
             from_sub = st.form_submit_button("Modtrain")
+
+## Method#1, Retrive database
+gsheetid = "1BevBgtAvlLvOqmHOBdH2Z1b0XdXmoYTx"    
+sheet_name = "TrainLocation"
+gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+Maindf = pd.read_csv(gsheet_url)
+
+st.write(Maindf)
+
+Maindf = Maindf.reset_index()
+for index,tid in Maindf.iterrows():     
+    st.write(tid['Train ID'], tid['Parking Location'] )
+
+Parking = Parks()
+
+Parking['TK201'] = Park('TK201_1',201, 1, 101, True)
+
+st.write(Parking['TK201'].train)
+
+#read data
+
+#add train to gsheet and layout
+
+#fill data in
+
 
 
 # Image run

@@ -14,6 +14,40 @@ class EngZone:
 
 #Color
 
+class Park:
+    def __init__(self, name='', track=0, pos=0,train = 0, occupied = False):
+        self.name = name
+        self.track = track
+        self.pos = pos
+        self.train = train
+        self.occupied = occupied
+
+    def __repr__(self):
+        return f"Park(name='{self.name}', track={self.track}, pos={self.pos}, train={self.train}, occupied={self.occupied} )"
+
+class Parks:
+    def __init__(self):
+        self.Parks = {}
+
+    def __getitem__(self, key):
+        # Allow dictionary-like access to student instances
+        if key not in self.Parks:
+            self.Parks[key] = Park()  # Create a new Student instance if it doesn't exist
+        return self.Parks[key]
+
+    def __setitem__(self, key, value):
+        # Allow dictionary-like setting of student instances
+        self.Parks[key] = value
+
+    def __delitem__(self, key):
+        # Allow dictionary-like deletion of student instances
+        if key in self.Parks:
+            del self.Parks[key]
+
+    def __contains__(self, key):
+        # Allow usage of 'in' keyword to check if a student exists
+        return key in self.Parks
+
 #Const
 DPTK201 = EngZone('DPTK201', (80,159) , (616,158) , (255,0,0) , 10)
 DPTK2012 = EngZone('DPTK201', (80,209) , (649,209) , (255,0,0) , 10)
