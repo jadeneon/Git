@@ -133,4 +133,4 @@ for c in range(0, 3):
                                        (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
 
 
-st.image(Layout)
+st.image(Layout,use_column_width=True)
