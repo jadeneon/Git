@@ -80,8 +80,7 @@ with st.form("Modify train loc",clear_on_submit=True):
 
 # Image run
 Layout = cv2.imread("./images/TrainLoc.PNG")
-Layout = cv2.imread("./images/TrainLoc.PNG")
-trainicon = cv2.imread("./images/trainicon2.png",cv2.IMREAD_UNCHANGED)
+trainicon = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
 
 trainicon = add_text_to_image(trainicon,'XXX',(60,90))
 #Layout= add_text_to_image(Layout,'101',(100,100))
