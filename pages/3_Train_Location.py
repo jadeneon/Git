@@ -78,6 +78,7 @@ with st.form("Modify train loc",clear_on_submit=True):
 
 # Image run
 Layout = cv2.imread("./images/Depot.PNG")
+Layout = cv2.imread("./images/Depot.PNG")
 trainicon = cv2.imread("./images/trainnobg.png",cv2.IMREAD_UNCHANGED)
 
 if trainicon.shape[2] == 4:
