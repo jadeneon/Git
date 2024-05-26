@@ -1,6 +1,7 @@
 import cv2
 import streamlit as st
 import requests
+import numpy as np
 from io import BytesIO
 
 class EngZone:
@@ -76,4 +77,60 @@ def Highlight(image, zone):
     #cv2.line(image, startpoint , endpoint  , color , thickness )
     return image
 
-    
+def resize_image(image, scale_percent):
+    # Calculate the new dimensions
+    width = int(image.shape[1] * scale_percent / 100)
+    height = int(image.shape[0] * scale_percent / 100)
+    dimensions = (width, height)
+    # Resize the image
+    resized_image = cv2.resize(image, dimensions, interpolation = cv2.INTER_AREA)
+    return resized_image
+
+def add_text_to_image(image, text, position, font=cv2.FONT_HERSHEY_SIMPLEX, 
+                      font_scale=1, color=(0,0,0) , thickness=6):
+
+    if image is None:
+        st.error("Image is None. Cannot add text to a NoneType object.")
+        return None
+
+    if image.shape[2] == 4:  # Check if image has an alpha channel
+        # Split the image into RGB and Alpha channels
+        bgr_image = image[:, :, :3]
+        alpha_channel = image[:, :, 3]
+        # Add text to the BGR image
+        image = cv2.cvtColor(image, cv2.COLOR_RGBA2BGRA)
+        cv2.putText(image, text, position, font, font_scale, color, thickness, cv2.LINE_AA)
+        #cv2.putText(image, text, position, font, font_scale, color, thickness, cv2.LINE_AA)
+        # Merge the BGR image and alpha channel back together
+        #result_image = cv2.merge((bgr_image, alpha_channel))
+        result_image = image
+    else:
+        # Add text directly if there is no alpha channel
+        cv2.putText(image, text, position, font, font_scale, color, thickness, cv2.LINE_AA)
+        result_image = image
+
+    return result_image
+
+
+def filltrain(layout,icon, x,y):
+     
+     return layout
+
+def IDadd(icon,id):
+    #icon = np.zeros((512,512,3), np.uint8)
+    # Write some Text
+    font                   = cv2.FONT_HERSHEY_SIMPLEX
+    bottomLeftCornerOfText = (0,0)
+    fontScale              = 1
+    fontColor              = (0,0,0)
+    thickness              = 2
+    lineType               = 2
+
+    cv2.putText(icon,str(id), 
+        bottomLeftCornerOfText, 
+        font, 
+        fontScale,
+        fontColor,
+        thickness,
+        cv2.LINE_AA)
+    return icon

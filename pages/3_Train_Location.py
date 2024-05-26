@@ -1,6 +1,7 @@
 import streamlit as st
 import cv2
 import numpy as np
+from jadeframework import *
 
 st.set_page_config(
     page_title="TCO Train Location",
@@ -35,12 +36,13 @@ st.markdown(init_page, unsafe_allow_html=True)
 st.sidebar.title("Hitachi TCO &copy;")
 st.sidebar.image("./images/hitachi.png")
 
-col1, col2, col3 = st.columns(3)
+
+col1, col2 = st.columns(2)
 
 with col1 :
-    st.markdown("# Train Location")
+    st.markdown("# Sanying TCO Train Location")
 
-with col3 :
+with col2 :
     C1,C2 = st.columns(2)
 
     if "login" in st.session_state :
@@ -77,9 +79,13 @@ with st.form("Modify train loc",clear_on_submit=True):
 
 
 # Image run
-Layout = cv2.imread("./images/Depot.PNG")
-Layout = cv2.imread("./images/Depot.PNG")
-trainicon = cv2.imread("./images/trainnobg.png",cv2.IMREAD_UNCHANGED)
+Layout = cv2.imread("./images/TrainLoc.PNG")
+trainicon = cv2.imread("./images/trainicon2.png",cv2.IMREAD_UNCHANGED)
+
+trainicon = add_text_to_image(trainicon,'XXX',(60,90))
+#Layout= add_text_to_image(Layout,'101',(100,100))
+trainicon = resize_image(trainicon,45)
+
 
 if trainicon.shape[2] == 4:
     # Split the foreground image into color and alpha channels
@@ -90,8 +96,8 @@ else:
     fg_color = trainicon
     alpha = np.ones(trainicon.shape[:2], dtype=float)
 
-x_offset=y_offset=150
-
+#Pos1
+x_offset=y_offset=100
 y1, y2 = y_offset, y_offset + fg_color.shape[0]
 x1, x2 = x_offset, x_offset + fg_color.shape[1]
 
@@ -99,13 +105,32 @@ for c in range(0, 3):
         Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
                                        (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
 
+#Pos2
+y_offset=100
+x_offset=215
+y1, y2 = y_offset, y_offset + fg_color.shape[0]
+x1, x2 = x_offset, x_offset + fg_color.shape[1]
+for c in range(0, 3):
+        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
+                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
 
-#Layout[y_offset:y_offset + trainicon.shape[0], x_offset:x_offset+trainicon.shape[1]] = trainicon
+#Pos3
+y_offset=100
+x_offset=330
+y1, y2 = y_offset, y_offset + fg_color.shape[0]
+x1, x2 = x_offset, x_offset + fg_color.shape[1]
+for c in range(0, 3):
+        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
+                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
+
+#Pos4
+y_offset=100
+x_offset=445
+y1, y2 = y_offset, y_offset + fg_color.shape[0]
+x1, x2 = x_offset, x_offset + fg_color.shape[1]
+for c in range(0, 3):
+        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
+                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
+
 
 st.image(Layout)
-
-#import cv2
-#s_img = cv2.imread("smaller_image.png")/
-#l_img = cv2.imread("larger_image.jpg")
-#x_offset=y_offset=50
-#l_img[y_offset:y_offset+s_img.shape[0], x_offset:x_offset+s_img.shape[1]] = s_img
