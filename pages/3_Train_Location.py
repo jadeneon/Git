@@ -3,6 +3,9 @@ import cv2
 import numpy as np
 from jadeframework import *
 import pandas as pd
+import re
+
+TRAINICON = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
 
 st.set_page_config(
     page_title="TCO Train Location",
@@ -65,6 +68,7 @@ with col2 :
                 else :
                     st.session_state.login = False
 
+
 # Option in form
 with st.form("Modify train loc",clear_on_submit=True):
     if st.session_state.user == 'jade':    
@@ -84,79 +88,43 @@ sheet_name = "TrainLocation"
 gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 Maindf = pd.read_csv(gsheet_url)
 
-st.write(Maindf)
-
+Parking = ParkCol()
 Maindf = Maindf.reset_index()
-for index,tid in Maindf.iterrows():     
-    st.write(tid['Train ID'], tid['Parking Location'] )
-
-Parking = Parks()
-
-Parking['TK201'] = Park('TK201_1',201, 1, 101, True)
-
-st.write(Parking['TK201'].train)
 
 #read data
+for index,tid in Maindf.iterrows():     
+    #st.write(tid['Train ID'], tid['Parking Location'] )
+    Emu = tid['Train ID']
+    parkLoc = tid['Parking Location']
 
-#add train to gsheet and layout
+#regex
+    pattern = r"TK(\d+)_([0-9]+)"
+    match = re.search(pattern, str(parkLoc))
+    if match:
+        Tr = match.group(1)
+        Pos = match.group(2)
+        Parking.add(Park(parkLoc,int(Tr),int(Pos),int(Emu),True))
 
-#fill data in
 
-
+#Parx = Park('TK201_1',201, 1, 101, True)
+#Parking.add(Park('TK201_1',201, 1, 101, True))
+#Parking.add(Park('TK201_2',201, 2, 102, True))
 
 # Image run
 Layout = cv2.imread("./images/TrainLoc.PNG")
-trainicon = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
-
-trainicon = add_text_to_image(trainicon,'XXX',(60,90))
-#Layout= add_text_to_image(Layout,'101',(100,100))
-trainicon = resize_image(trainicon,45)
 
 
-if trainicon.shape[2] == 4:
-    # Split the foreground image into color and alpha channels
-    fg_color = trainicon[:, :, :3]
-    alpha = trainicon[:, :, 3] / 255.0
-else:
-    # If no alpha channel, create a mask with full opacity
-    fg_color = trainicon
-    alpha = np.ones(trainicon.shape[:2], dtype=float)
 
-#Pos1
-x_offset=y_offset=100
-y1, y2 = y_offset, y_offset + fg_color.shape[0]
-x1, x2 = x_offset, x_offset + fg_color.shape[1]
+#add train to gsheet and layout
+TRAINICON = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
 
-for c in range(0, 3):
-        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
-                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
-
-#Pos2
-y_offset=100
-x_offset=215
-y1, y2 = y_offset, y_offset + fg_color.shape[0]
-x1, x2 = x_offset, x_offset + fg_color.shape[1]
-for c in range(0, 3):
-        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
-                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
-
-#Pos3
-y_offset=100
-x_offset=330
-y1, y2 = y_offset, y_offset + fg_color.shape[0]
-x1, x2 = x_offset, x_offset + fg_color.shape[1]
-for c in range(0, 3):
-        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
-                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
-
-#Pos4
-y_offset=100
-x_offset=445
-y1, y2 = y_offset, y_offset + fg_color.shape[0]
-x1, x2 = x_offset, x_offset + fg_color.shape[1]
-for c in range(0, 3):
-        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
-                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
-
+for pid in Parking:
+    #Add train ID
+    trainicon = None
+    trainicon = add_text_to_image(TRAINICON,str(pid.train),(60,90))
+    st.write(pid)
+    trainicon = resize_image(trainicon,40)
+    #fill data in
+    Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
 
 st.image(Layout,use_column_width=True)

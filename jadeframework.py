@@ -16,37 +16,61 @@ class EngZone:
 
 class Park:
     def __init__(self, name='', track=0, pos=0,train = 0, occupied = False):
-        self.name = name
-        self.track = track
-        self.pos = pos
-        self.train = train
+        self.name = name  # Track Location
+        self.track = track # Track 
+        self.pos = pos  # Pos 
+        self.train = train # EMU ID
         self.occupied = occupied
 
     def __repr__(self):
         return f"Park(name='{self.name}', track={self.track}, pos={self.pos}, train={self.train}, occupied={self.occupied} )"
 
-class Parks:
+class ParkCol:
     def __init__(self):
-        self.Parks = {}
+        self._collection = {}
+        
+    def add(self, park):
+        if isinstance(park, Park):
+            self._collection[park.name] = park
+        else:
+            raise TypeError("Only instances of Car can be added to the collection.")
+
+    def remove(self, make):
+        if make in self._collection:
+            del self._collection[make]
+        else:
+            raise ValueError("Car not found in the collection.")
+
 
     def __getitem__(self, key):
         # Allow dictionary-like access to student instances
-        if key not in self.Parks:
-            self.Parks[key] = Park()  # Create a new Student instance if it doesn't exist
-        return self.Parks[key]
+        if key in self._collection:
+            #self.Parks[key] = Park()  # Create a new Student instance if it doesn't exist
+            return self._collection[key]
+        else:
+            raise KeyError("Car not found in the collection.")
 
     def __setitem__(self, key, value):
         # Allow dictionary-like setting of student instances
-        self.Parks[key] = value
+        self._collection[key] = value
 
     def __delitem__(self, key):
         # Allow dictionary-like deletion of student instances
         if key in self.Parks:
-            del self.Parks[key]
+            del self._collection[key]
 
     def __contains__(self, key):
         # Allow usage of 'in' keyword to check if a student exists
-        return key in self.Parks
+        return key in self._collection
+    
+    def __iter__(self):
+        return iter(self._collection.values())
+    
+    def __len__(self):
+        return len(self._collection)
+
+    def __repr__(self):
+        return f"ParkCol({self._collection})"
 
 #Const
 DPTK201 = EngZone('DPTK201', (80,159) , (616,158) , (255,0,0) , 10)
@@ -145,26 +169,48 @@ def add_text_to_image(image, text, position, font=cv2.FONT_HERSHEY_SIMPLEX,
 
     return result_image
 
+#201 Pos1 x_offset=y_offset=100
+#201 Pos2 x_offset=215 y_offset=100
+#201 Pos3 x_offset=330 y_offset=100
+#201 Pos4 x_offset=445 y_offset=100
 
-def filltrain(layout,icon, x,y):
-     
-     return layout
 
-def IDadd(icon,id):
-    #icon = np.zeros((512,512,3), np.uint8)
-    # Write some Text
-    font                   = cv2.FONT_HERSHEY_SIMPLEX
-    bottomLeftCornerOfText = (0,0)
-    fontScale              = 1
-    fontColor              = (0,0,0)
-    thickness              = 2
-    lineType               = 2
+def filltrain(Layout,icon, track , pos):
+    x_offset=y_offset=100
+    match track :
+        case 201:
+            y_offset = 105
+        case 202:
+            y_offset = 155
+        case 203:
+            y_offset = 205
 
-    cv2.putText(icon,str(id), 
-        bottomLeftCornerOfText, 
-        font, 
-        fontScale,
-        fontColor,
-        thickness,
-        cv2.LINE_AA)
-    return icon
+    match pos: 
+        case 1:
+            x_offset = 100
+        case 2:
+            x_offset = 215
+        case 3:
+            x_offset = 330
+        case 4:
+            x_offset = 445
+
+    if icon.shape[2] == 4:
+        # Split the foreground image into color and alpha channels
+        fg_color = icon[:, :, :3]
+        alpha = icon[:, :, 3] / 255.0
+    else:
+        # If no alpha channel, create a mask with full opacity
+        fg_color = icon
+        alpha = np.ones(icon.shape[:2], dtype=float)
+    
+    #Position 
+    #x_offset=y_offset=100
+    y1, y2 = y_offset, y_offset + fg_color.shape[0]
+    x1, x2 = x_offset, x_offset + fg_color.shape[1]
+
+    for c in range(0, 3):
+        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
+                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
+ 
+    return Layout
