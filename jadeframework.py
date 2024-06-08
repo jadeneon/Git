@@ -145,7 +145,7 @@ def resize_image(image, scale_percent):
     return resized_image
 
 def add_text_to_image(image, text, position, font=cv2.FONT_HERSHEY_SIMPLEX, 
-                      font_scale=1, color=(0,0,0) , thickness=6):
+                      font_scale=2, color=(0,0,0) , thickness=6):
 
     if image is None:
         st.error("Image is None. Cannot add text to a NoneType object.")
@@ -179,11 +179,21 @@ def filltrain(Layout,icon, track , pos):
     x_offset=y_offset=100
     match track :
         case 201:
-            y_offset = 105
+            y_offset = 111
         case 202:
-            y_offset = 155
+            y_offset = 164
         case 203:
-            y_offset = 205
+            y_offset = 211
+        case 204:
+            y_offset = 258
+        case 205:
+            y_offset = 309
+        case 206:
+            y_offset = 357
+        case 207:
+            y_offset = 405
+        case 208:
+            y_offset = 455
 
     match pos: 
         case 1:

@@ -5,8 +5,6 @@ from jadeframework import *
 import pandas as pd
 import re
 
-TRAINICON = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
-
 st.set_page_config(
     page_title="TCO Train Location",
     layout="wide",
@@ -79,52 +77,61 @@ with st.form("Modify train loc",clear_on_submit=True):
             ParkingLoc = st.selectbox("Parking",("201_1","201_0"))
         with c13:
             st.write("")
-            st.write("")
             from_sub = st.form_submit_button("Modtrain")
 
 ## Method#1, Retrive database
 gsheetid = "1BevBgtAvlLvOqmHOBdH2Z1b0XdXmoYTx"    
 sheet_name = "TrainLocation"
 gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-Maindf = pd.read_csv(gsheet_url)
+connFailed = False
+try:
+    Maindf = pd.read_csv(gsheet_url)
+except pd.errors.EmptyDataError:
+        print("The CSV file is empty.")
+        connFailed = True
+except pd.errors.ParserError:
+        print("Error parsing the CSV file.")
+        connFailed = True
+except Exception as e:
+        print(f"An error occurred: {e}")
+        connFailed = True
 
-Parking = ParkCol()
-Maindf = Maindf.reset_index()
+#Connection Check
+if connFailed == False:
 
-#read data
-for index,tid in Maindf.iterrows():     
-    #st.write(tid['Train ID'], tid['Parking Location'] )
-    Emu = tid['Train ID']
-    parkLoc = tid['Parking Location']
+    Parking = ParkCol()
+    Maindf = Maindf.reset_index()
 
-#regex
-    pattern = r"TK(\d+)_([0-9]+)"
-    match = re.search(pattern, str(parkLoc))
-    if match:
-        Tr = match.group(1)
-        Pos = match.group(2)
-        Parking.add(Park(parkLoc,int(Tr),int(Pos),int(Emu),True))
+    #read data
+    for index,tid in Maindf.iterrows():     
+        #st.write(tid['Train ID'], tid['Parking Location'] )
+        Emu = tid['Train ID']
+        parkLoc = tid['Parking Location']
 
-
-#Parx = Park('TK201_1',201, 1, 101, True)
-#Parking.add(Park('TK201_1',201, 1, 101, True))
-#Parking.add(Park('TK201_2',201, 2, 102, True))
-
-# Image run
-Layout = cv2.imread("./images/TrainLoc.PNG")
+    #regex
+        pattern = r"TK(\d+)_([0-9]+)"
+        match = re.search(pattern, str(parkLoc))
+        if match:
+            Tr = match.group(1)
+            Pos = match.group(2)
+            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(Emu),True))
 
 
+    # Image run
+    Layout = cv2.imread("./images/TrainLoc.PNG")
 
-#add train to gsheet and layout
-TRAINICON = cv2.imread("./images/trainIcon2.png",cv2.IMREAD_UNCHANGED)
 
-for pid in Parking:
-    #Add train ID
-    trainicon = None
-    trainicon = add_text_to_image(TRAINICON,str(pid.train),(60,90))
-    st.write(pid)
-    trainicon = resize_image(trainicon,40)
-    #fill data in
-    Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
 
-st.image(Layout,use_column_width=True)
+    #add train to gsheet and layout
+
+    for pid in Parking:
+        #Add train ID
+        trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
+        trainicon = add_text_to_image(trainicon,str(pid.train),(30,65))
+        trainicon = resize_image(trainicon,40)
+        #fill data in
+        Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
+
+    st.image(Layout,use_column_width=True)
+else:
+     st.write("No google drive connection, Check your internet connection")
