@@ -3,7 +3,7 @@ import re
 
 HOSTNAME = "ftp.jnnprogress.com"
 USERNAME = "sanying@jnnprogress.com"
-PASSWORD = "Hitachi2023"
+#PASSWORD = "Hitachi2023"
 
 # Connect FTP Server
 ftp_server = ftplib.FTP(HOSTNAME, USERNAME, PASSWORD)
