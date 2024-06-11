@@ -86,13 +86,46 @@ st.markdown(background_image, unsafe_allow_html=True)
 st.sidebar.title("Hitachi TCO &copy;")
 st.sidebar.image("./images/hitachi.png")
 
-#st.markdown(opacity, unsafe_allow_html=True)
+
+
 st.markdown("# Welcome to Sanying Possession Plan")
 
-st.error("TCO contact number : ")
+#Google connect
+gsheetid = "1BevBgtAvlLvOqmHOBdH2Z1b0XdXmoYTx"    
+sheet_name = "WeeklyInfo"
+gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
-st.warning("Becareful of earthquake in taipei enjoy; find update image below")
+connFailed = False
+try:
+    Maindf = pd.read_csv(gsheet_url)
+except pd.errors.EmptyDataError:
+        #print("The CSV file is empty.")
+        connFailed = True
+except pd.errors.ParserError:
+        #print("Error parsing the CSV file.")
+        connFailed = True
+except Exception as e:
+        #print(f"An error occurred: {e}")
+        connFailed = True
 
+
+#get max data
+if connFailed == False:
+    Annmessage =""
+    TCOnumber =""
+    warningmsg =""
+    for index, row in Maindf.iterrows():
+        if (index>1) and (str(row['Info1']) != "nan") and (index<8):
+            Annmessage = Annmessage + str(row['Info1']) + "\n\n"
+        if index == 8:
+            TCOnumber = str(row['Info1'])
+        if index == 9:
+            warningmsg = str(row['Info1'])
+    st.info(Annmessage)
+    st.error(TCOnumber)
+    st.warning(warningmsg)
+else:
+     st.error("Google drive connection failed")
 #ann3 =  Image.open("./images/ann3.PNG")
 #set_background("./images/ann3.PNG")
 #set_background("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png")

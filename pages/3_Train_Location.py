@@ -2,6 +2,8 @@ import streamlit as st
 import cv2
 import numpy as np
 from jadeframework import *
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import re
 
@@ -82,10 +84,25 @@ with st.form("Modify train loc",clear_on_submit=True):
 ## Method#1, Retrive database
 gsheetid = "1BevBgtAvlLvOqmHOBdH2Z1b0XdXmoYTx"    
 sheet_name = "TrainLocation"
+key_file_path = "./cre/servicekey.json"
+scope = [
+    'https://www.googleapis.com/auth/drive'
+]
+#credentials = ServiceAccountCredentials.from_json_keyfile_name(key_file_path, scope)
+client = gspread.authorize(credentials)
+
+# Open the Google Sheet by its name
+sheet = client.open(sheet_name).sheet1  # Open the first sheet
+
+# Read data from the sheet into a pandas DataFrame
+data = sheet.get_all_records()
+
 gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 connFailed = False
+
 try:
-    Maindf = pd.read_csv(gsheet_url)
+    #Maindf = pd.read_csv(gsheet_url)
+    Maindf = pd.DataFrame(data)
 except pd.errors.EmptyDataError:
         print("The CSV file is empty.")
         connFailed = True
@@ -116,14 +133,10 @@ if connFailed == False:
             Pos = match.group(2)
             Parking.add(Park(parkLoc,int(Tr),int(Pos),int(Emu),True))
 
-
-    # Image run
+    #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
 
-
-
     #add train to gsheet and layout
-
     for pid in Parking:
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
