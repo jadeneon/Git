@@ -27,15 +27,15 @@ file_names = ftp_server.nlst()
 #print(file_names[1])
 numberoffile = len(file_names)
 pattern = r"ann.\..{3}"
+counter = 0
+print(file_names)
 
-
-
-for index in range(numberoffile):
-    temp = file_names[1]
-    match = re.search(pattern,temp)
+while counter < len(file_names):
+    match = re.search(pattern,file_names[counter])
     if not match:
-        file_names.pop(index)
-        index = index -1
+        file_names.pop(counter)
+    else:
+        counter = counter +1
 
 print(file_names)
 

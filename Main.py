@@ -86,8 +86,6 @@ st.markdown(background_image, unsafe_allow_html=True)
 st.sidebar.title("Hitachi TCO &copy;")
 st.sidebar.image("./images/hitachi.png")
 
-
-
 st.markdown("# Welcome to Sanying Possession Plan")
 
 #Google connect
