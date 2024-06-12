@@ -121,6 +121,7 @@ if connFailed == False:
             warningmsg = str(row['Info1'])
     st.info(Annmessage)
     st.error(TCOnumber)
+    
     st.warning(warningmsg)
 else:
      st.error("Google drive connection failed")
