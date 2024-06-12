@@ -96,9 +96,9 @@ else:
 #st.write(response.content)
 #st.image(io.BytesIO(response.content))
 #st.markdown(f'<iframe src="{urla}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.PNG', caption= "Ann1")
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann2.PNG')
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann3.PNG')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann2.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann3.png')
 
 #add control area Table directly retrive from db without processing
 
