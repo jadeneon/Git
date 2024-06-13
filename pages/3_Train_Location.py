@@ -145,6 +145,6 @@ if connFailed == False:
         #fill data in
         Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
 
-    st.image(Layout,use_column_width=True)
+    st.image(Layout)
 else:
      st.write("No google drive connection, Check your internet connection")
