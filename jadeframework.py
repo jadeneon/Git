@@ -204,6 +204,22 @@ def filltrain(Layout,icon, track , pos):
             x_offset = 330
         case 4:
             x_offset = 445
+
+    if (track == 106) and (pos == 1):
+        y_offset = 770
+        x_offset = 100
+
+    if (track == 106) and (pos == 2):
+        y_offset = 770
+        x_offset = 330
+
+    if (track == 105) and (pos == 1):
+        y_offset = 820
+        x_offset = 100        
+
+    if (track == 105) and (pos == 2):
+        y_offset = 820
+        x_offset = 330        
 #101 3
 #102 1
 #103 1

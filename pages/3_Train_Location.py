@@ -84,25 +84,25 @@ with st.form("Modify train loc",clear_on_submit=True):
 ## Method#1, Retrive database
 gsheetid = "1BevBgtAvlLvOqmHOBdH2Z1b0XdXmoYTx"    
 sheet_name = "TrainLocation"
-key_file_path = "./cre/servicekey.json"
-scope = [
-    'https://www.googleapis.com/auth/drive'
-]
+#key_file_path = "./cre/servicekey.json"
+#scope = [
+#    'https://www.googleapis.com/auth/drive'
+#]
 #credentials = ServiceAccountCredentials.from_json_keyfile_name(key_file_path, scope)
-client = gspread.authorize(credentials)
+#client = gspread.authorize(credentials)
 
 # Open the Google Sheet by its name
-sheet = client.open(sheet_name).sheet1  # Open the first sheet
+#sheet = client.open(sheet_name).sheet1  # Open the first sheet
 
 # Read data from the sheet into a pandas DataFrame
-data = sheet.get_all_records()
+#data = sheet.get_all_records()
 
 gsheet_url = f"https://docs.google.com/spreadsheets/d/{gsheetid}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 connFailed = False
 
 try:
-    #Maindf = pd.read_csv(gsheet_url)
-    Maindf = pd.DataFrame(data)
+    Maindf = pd.read_csv(gsheet_url)
+    #Maindf = pd.DataFrame(data)
 except pd.errors.EmptyDataError:
         print("The CSV file is empty.")
         connFailed = True

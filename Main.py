@@ -49,11 +49,11 @@ background_image = """
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://www.jnnprogress.com/Site/Hitachi/images/ann1.PNG');
+    background-image: url('https://www.jnnprogress.com/Site/Hitachi/images/interior2.png');
     background-size: 100vw 100vh;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.05; /* Set the opacity of the background image */
+    opacity: 0.1; /* Set the opacity of the background image */
     z-index: -1; /* Place the pseudo-element behind the main content */
 }
 </style>
