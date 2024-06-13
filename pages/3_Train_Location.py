@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from jadeframework import *
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+#from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import re
 
