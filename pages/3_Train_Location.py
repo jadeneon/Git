@@ -126,12 +126,18 @@ if connFailed == False:
         parkLoc = tid['Parking Location']
 
     #regex
+        pattern = r"T(\d{2})"
+        match = re.search(pattern, str(Emu))
+        if match:
+            EmuId = match.group(1)
+    
+    #regex
         pattern = r"TK(\d+)_([0-9]+)"
         match = re.search(pattern, str(parkLoc))
         if match:
             Tr = match.group(1)
             Pos = match.group(2)
-            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(Emu),True))
+            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
 
     #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
@@ -140,7 +146,10 @@ if connFailed == False:
     for pid in Parking:
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
-        trainicon = add_text_to_image(trainicon,str(pid.train),(30,65))
+        tprefix = "T"
+        if pid.train < 10:
+             tprefix = "T0"
+        trainicon = add_text_to_image(trainicon,tprefix+str(pid.train),(30,65))
         trainicon = resize_image(trainicon,40)
         #fill data in
         Layout = filltrain(Layout,trainicon,pid.track,pid.pos)

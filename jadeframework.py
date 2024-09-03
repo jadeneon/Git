@@ -15,7 +15,7 @@ class EngZone:
 #Color
 
 class Park:
-    def __init__(self, name='', track=0, pos=0,train = 0, occupied = False):
+    def __init__(self, name='', track=0, pos = 0, train = 0, occupied = False):
         self.name = name  # Track Location
         self.track = track # Track 
         self.pos = pos  # Pos 
@@ -174,7 +174,6 @@ def add_text_to_image(image, text, position, font=cv2.FONT_HERSHEY_SIMPLEX,
 #201 Pos3 x_offset=330 y_offset=100
 #201 Pos4 x_offset=445 y_offset=100
 
-
 def filltrain(Layout,icon, track , pos):
     x_offset=y_offset=100
     match track :
@@ -205,21 +204,23 @@ def filltrain(Layout,icon, track , pos):
         case 4:
             x_offset = 445
 
-    if (track == 106) and (pos == 1):
-        y_offset = 770
-        x_offset = 100
+    match track :
+        case 104:
+            y_offset = 720
 
-    if (track == 106) and (pos == 2):
-        y_offset = 770
-        x_offset = 330
+        case 105:
+            y_offset = 770
 
-    if (track == 105) and (pos == 1):
-        y_offset = 820
-        x_offset = 100        
+        case 106:
+            y_offset = 820
 
-    if (track == 105) and (pos == 2):
-        y_offset = 820
-        x_offset = 330        
+    if track in [104,105,106]:
+        match pos:
+            case 1:
+                x_offset = 100
+            case 2:
+                x_offset = 330
+     
 #101 3
 #102 1
 #103 1
