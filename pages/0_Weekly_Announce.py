@@ -98,8 +98,9 @@ else:
 #st.image(io.BytesIO(response.content))
 #st.markdown(f'<iframe src="{urla}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.png')
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann2.png')
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann3.png')
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann4.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/map.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/controlroom.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/controltrack.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/controltrain.png')
 
 #add control area Table directly retrive from db without processing
