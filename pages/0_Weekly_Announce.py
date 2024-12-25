@@ -69,6 +69,10 @@ except Exception as e:
         #print(f"An error occurred: {e}")
         connFailed = True
 
+st.markdown("# Train Testing / Energization Plan")
+
+st.markdown(" # Shutdown  Plan ")
+
 
 if connFailed == False:
     df = pd.DataFrame(Maindf)
@@ -81,9 +85,6 @@ if connFailed == False:
 
 else:
      st.error("Google drive connection failed")
-
-
-
 
 #urla = 'https://www.jnnprogress.com/Site/Hitachi/images/ann1.PNG'
 #urla = 'https://www.jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf'
@@ -101,9 +102,3 @@ st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann2.png')
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann3.png')
 
 #add control area Table directly retrive from db without processing
-
-st.markdown("# Train Testing / Energization Plan")
-
-st.markdown(" # Shutdown  Plan ")
-
-
