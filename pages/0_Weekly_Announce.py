@@ -70,21 +70,19 @@ except Exception as e:
         connFailed = True
 
 st.markdown("# Train Testing / Energization Plan")
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.png')
 
-st.markdown(" # Shutdown  Plan ")
-
-
-if connFailed == False:
-    df = pd.DataFrame(Maindf)
-    weekdate = df.iloc[0,1]
-    weeknumber = df.iloc[1,1]
-    st.markdown("# Weekly Announce for week : " + weeknumber) 
-    st.info("Date : "+ weekdate)
-    st.markdown("# Controlled Area ")
+#if connFailed == False:
+#    df = pd.DataFrame(Maindf)
+#    weekdate = df.iloc[0,1]
+#    weeknumber = df.iloc[1,1]
+#    st.markdown("# Weekly Announce for week : " + weeknumber) 
+#    st.info("Date : "+ weekdate)
+#    st.markdown("# Controlled Area ")
 
 
-else:
-     st.error("Google drive connection failed")
+#else:
+#     st.error("Google drive connection failed")
 
 #urla = 'https://www.jnnprogress.com/Site/Hitachi/images/ann1.PNG'
 #urla = 'https://www.jnnprogress.com/Site/Hitachi/ann/DepotControl.pdf'
@@ -97,7 +95,7 @@ else:
 #st.write(response.content)
 #st.image(io.BytesIO(response.content))
 #st.markdown(f'<iframe src="{urla}" width="700" height="1000"></iframe>', unsafe_allow_html=True)
-st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.png')
+
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/map.png')
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/controlroom.png')
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/controltrack.png')
