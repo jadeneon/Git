@@ -100,5 +100,6 @@ else:
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann1.png')
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann2.png')
 st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann3.png')
+st.image('https://www.jnnprogress.com/Site/Hitachi/images/ann4.png')
 
 #add control area Table directly retrive from db without processing
