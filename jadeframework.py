@@ -193,8 +193,8 @@ def filltrain(Layout,icon, track , pos):
             y_offset = 405
         case 208:
             y_offset = 455
-        case 0:
-            y_offset = 50
+        case 0: # TTK Locaiton
+            y_offset = 30
 
     match pos: 
         case 1:
