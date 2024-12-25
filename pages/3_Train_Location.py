@@ -129,7 +129,7 @@ if connFailed == False:
         pattern = r"T(\d{2})"
         match = re.search(pattern, str(Emu))
         if match:
-            EmuId = match.group(1)
+            EmuId = match.group(1)        
     
     #regex
         pattern = r"TK(\d+)_([0-9]+)"
@@ -137,6 +137,13 @@ if connFailed == False:
         if match:
             Tr = match.group(1)
             Pos = match.group(2)
+            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
+    # TTK Location identification
+        pattern = r"TT_PLAT(\d)"
+        match = re.search(pattern, str(parkLoc))
+        if match:
+            Tr = 0
+            Pos = match.group(1)
             Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
 
     #Image run

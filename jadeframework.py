@@ -193,6 +193,8 @@ def filltrain(Layout,icon, track , pos):
             y_offset = 405
         case 208:
             y_offset = 455
+        case 0:
+            y_offset = 50
 
     match pos: 
         case 1:
@@ -203,6 +205,7 @@ def filltrain(Layout,icon, track , pos):
             x_offset = 330
         case 4:
             x_offset = 445
+            
 
     match track :
         case 104:
@@ -213,13 +216,20 @@ def filltrain(Layout,icon, track , pos):
 
         case 106:
             y_offset = 820
-
+# MWS Location
     if track in [104,105,106]:
         match pos:
             case 1:
                 x_offset = 100
             case 2:
                 x_offset = 330
+# TTK    
+    if track == 0:
+        match pos:
+            case 2:
+                x_offset = 100
+            case 1:
+                x_offset = 1000                
      
 #101 3
 #102 1
