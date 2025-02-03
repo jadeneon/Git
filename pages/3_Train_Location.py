@@ -137,7 +137,8 @@ if connFailed == False:
         if match:
             Tr = match.group(1)
             Pos = match.group(2)
-            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
+            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))     
+     
     # TTK Location identification
         pattern = r"TT_PLAT(\d)"
         match = re.search(pattern, str(parkLoc))
@@ -146,12 +147,24 @@ if connFailed == False:
             Pos = match.group(1)
             Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
 
+    # ML location
+        pattern = r"LB(0[1-9]|1[0-2])[UD]"
+        match = re.search(pattern, str(parkloc))
+        if match :
+            if match.group(2) == "U":
+                tr = 1000
+            if match.group(2) == "D":
+                tr = 1001
+        #Parking.add(park)
+
     #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
     MLLayout = cv2.imread("./images/Mainline.PNG")
 
     #add train to gsheet and layout Depot
     for pid in Parking:
+        if pid.Tr == 1000 or pid.Tr == 1000:
+            continue
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
         tprefix = "T"
