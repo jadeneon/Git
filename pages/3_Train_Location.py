@@ -148,7 +148,7 @@ if connFailed == False:
 
     #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
-    MLLayout = cv2.imread("./images/mainline.PNG")
+    MLLayout = cv2.imread("./images/Mainline.PNG")
 
     #add train to gsheet and layout Depot
     for pid in Parking:
