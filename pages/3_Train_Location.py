@@ -180,7 +180,7 @@ if connFailed == False:
 #   add train to gsheet and layout Mainline
     for pid in Parking:
 #        #Add train ID
-        if (pid.track != 1000) or (pid.track != 1001):
+        if pid.track < 1000:
             continue
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
         tprefix = "T"
