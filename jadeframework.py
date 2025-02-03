@@ -258,9 +258,9 @@ def filltrainML(Layout,icon, track , pos):
     x_offset=y_offset=100
     match track :
         case 1000:
-            y_offset = 287
+            y_offset = 287 #checked
         case 1001:
-            y_offset = 140
+            y_offset = 140 #checked
 
     match pos :
         case 1:
@@ -270,13 +270,15 @@ def filltrainML(Layout,icon, track , pos):
         case 3:
             x_offset = 0
         case 4:
-            x_offset = 570
+            x_offset = 550
         case 5:
             x_offset = 0
         case 6:
             x_offset = 900  #checked
         case 7:
-            x_offset = 1100
+            x_offset = 1100 #checked
+        case 8:
+            x_offset = 1200
 
     if icon.shape[2] == 4:
         # Split the foreground image into color and alpha channels
