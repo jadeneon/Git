@@ -280,11 +280,11 @@ def filltrainML(Layout,icon, track , pos):
         case 8:
             x_offset = 1270 #checked
         case 9:
-            x_offset = 1470
+            x_offset = 1490
         case 10:
             x_offset = 1620 #checked
         case 11:
-            x_offset = 1730
+            x_offset = 1750
         case 12:
             x_offset = 1270
     
