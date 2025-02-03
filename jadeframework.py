@@ -255,5 +255,25 @@ def filltrain(Layout,icon, track , pos):
 
 def filltrainML(Layout,icon, track , pos):
 
+    x_offset=y_offset=100
+
+    if icon.shape[2] == 4:
+        # Split the foreground image into color and alpha channels
+        fg_color = icon[:, :, :3]
+        alpha = icon[:, :, 3] / 255.0
+    else:
+        # If no alpha channel, create a mask with full opacity
+        fg_color = icon
+        alpha = np.ones(icon.shape[:2], dtype=float)
+    
+    #Position 
+    #x_offset=y_offset=100
+    y1, y2 = y_offset, y_offset + fg_color.shape[0]
+    x1, x2 = x_offset, x_offset + fg_color.shape[1]
+
+    for c in range(0, 3):
+        Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
+                                       (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
+
 
     return Layout

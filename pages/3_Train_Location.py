@@ -152,10 +152,11 @@ if connFailed == False:
         match = re.search(pattern, str(parkLoc))
         if match :
             if match.group(2) == "U":
-                tr = 1000
+                Tr = 1000
             if match.group(2) == "D":
-                tr = 1001
-        #Parking.add(park)
+                Tr = 1001
+            Pos = match.group(1)
+            Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))
 
     #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
@@ -176,17 +177,19 @@ if connFailed == False:
         Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
     st.image(Layout)
 
-#   add train to gsheet and layout Depot
-#    for pid in Parking:
+#   add train to gsheet and layout Mainline
+    for pid in Parking:
 #        #Add train ID
-#        trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
-#        tprefix = "T"
-#        if pid.train < 10:
-#             tprefix = "T0"
-#        trainicon = add_text_to_image(trainicon,tprefix+str(pid.train),(30,65))
-#        trainicon = resize_image(trainicon,40)
-#        #fill data in
-#        Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
+        if (pid.track != 1000) and (pid.track != 1001):
+            continue
+        trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
+        tprefix = "T"
+        if pid.train < 10:
+             tprefix = "T0"
+        trainicon = add_text_to_image(trainicon,tprefix+str(pid.train),(30,65))
+        trainicon = resize_image(trainicon,40)
+        #fill data in
+        MLLayout = filltrainML(MLLayout,trainicon,pid.track,pid.pos)
     st.image(MLLayout)
 
 else:
