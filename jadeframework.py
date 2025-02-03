@@ -258,12 +258,12 @@ def filltrainML(Layout,icon, track , pos):
     x_offset=y_offset=100
     match track :
         case 1000:
-            y_offset = 250
+            y_offset = 270
         case 1001:
-            y_offset = 110
+            y_offset = 130
 
     match pos :
-        case '04':
+        case 4:
             x_offset = 500
 
     if icon.shape[2] == 4:
