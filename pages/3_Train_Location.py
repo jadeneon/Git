@@ -163,7 +163,7 @@ if connFailed == False:
 
     #add train to gsheet and layout Depot
     for pid in Parking:
-        if (pid.Tr == 1000) or (pid.Tr == 1001):
+        if (pid.track == 1000) or (pid.track == 1001):
             continue
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
