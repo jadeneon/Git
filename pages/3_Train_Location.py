@@ -172,7 +172,7 @@ if connFailed == False:
         if pid.train < 10:
              tprefix = "T0"
         trainicon = add_text_to_image(trainicon,tprefix+str(pid.train),(30,65))
-        trainicon = resize_image(trainicon,40)
+        trainicon = resize_image(trainicon,20)
         #fill data in
         Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
     st.image(Layout)
