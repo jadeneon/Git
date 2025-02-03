@@ -149,7 +149,7 @@ if connFailed == False:
 
     # ML location
         pattern = r"LB(0[1-9]|1[0-2])[UD]"
-        match = re.search(pattern, str(parkloc))
+        match = re.search(pattern, str(parkLoc))
         if match :
             if match.group(2) == "U":
                 tr = 1000
@@ -163,7 +163,7 @@ if connFailed == False:
 
     #add train to gsheet and layout Depot
     for pid in Parking:
-        if pid.Tr == 1000 or pid.Tr == 1000:
+        if (pid.Tr == 1000) or (pid.Tr == 1001):
             continue
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
