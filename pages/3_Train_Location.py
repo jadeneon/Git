@@ -148,12 +148,12 @@ if connFailed == False:
             Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))          
 
     # ML location
-        pattern = r"LB(0[1-9]|1[0-2])[UD]"
+        pattern = r"LB(0[1-9]|1[0-2])([UD])"
         match = re.search(pattern, str(parkLoc))
         if match :
-            if match.group(2) == 'U':
+            if match.group(2) == 'U' :
                 Tr = 1000
-            if match.group(2) == 'D':
+            if match.group(2) == 'D' :
                 Tr = 1001
             Pos = match.group(1)
             Parking.add(Park(parkLoc,int(Tr),int(Pos),int(EmuId),True))
