@@ -230,14 +230,8 @@ def filltrain(Layout,icon, track , pos):
                 x_offset = 180
             case 1:
                 x_offset = 1600                
-     
-#101 3
-#102 1
-#103 1
-#104,105,106 2 each
-#107 2 each
 
-
+#Depot filled
     if icon.shape[2] == 4:
         # Split the foreground image into color and alpha channels
         fg_color = icon[:, :, :3]
@@ -255,5 +249,11 @@ def filltrain(Layout,icon, track , pos):
     for c in range(0, 3):
         Layout[y1:y2, x1:x2, c] = (alpha[:y2-y1, :x2-x1] * fg_color[:y2-y1, :x2-x1, c] +
                                        (1 - alpha[:y2-y1, :x2-x1]) * Layout[y1:y2, x1:x2, c])
- 
+
+
+    return Layout
+
+def filltrain(Layout,icon, track , pos):
+
+
     return Layout

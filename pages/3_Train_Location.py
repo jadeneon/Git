@@ -148,8 +148,9 @@ if connFailed == False:
 
     #Image run
     Layout = cv2.imread("./images/TrainLoc.PNG")
+    MLLayout = cv2.imread("./images/MLlayout.PNG")
 
-    #add train to gsheet and layout
+    #add train to gsheet and layout Depot
     for pid in Parking:
         #Add train ID
         trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
@@ -160,7 +161,20 @@ if connFailed == False:
         trainicon = resize_image(trainicon,40)
         #fill data in
         Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
-
     st.image(Layout)
+
+#   add train to gsheet and layout Depot
+#    for pid in Parking:
+#        #Add train ID
+#        trainicon = cv2.imread("./images/trainIcon3.png",cv2.IMREAD_UNCHANGED)
+#        tprefix = "T"
+#        if pid.train < 10:
+#             tprefix = "T0"
+#        trainicon = add_text_to_image(trainicon,tprefix+str(pid.train),(30,65))
+#        trainicon = resize_image(trainicon,40)
+#        #fill data in
+#        Layout = filltrain(Layout,trainicon,pid.track,pid.pos)
+    st.image(MLLayout)
+
 else:
      st.write("No google drive connection, Check your internet connection")
