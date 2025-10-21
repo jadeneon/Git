@@ -242,8 +242,8 @@ def filltrain(Layout,icon, track , pos):
         case 503 :
             match pos:
                 case 1: #near MWS
-                    y_offset = 500
-                    x_offset = 560
+                    y_offset = 505
+                    x_offset = 600
                 case 2: #near ML
                     y_offset = 720
                     x_offset = 100        
