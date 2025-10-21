@@ -210,12 +210,15 @@ def filltrain(Layout,icon, track , pos):
     match track :
         case 101:
             y_offset = 720
+            x_offset = 330
         
         case 102:
             y_offset = 720
+            x_offset = 330
 
         case 103:
             y_offset = 720
+            x_offset = 330
 
         case 104:
             y_offset = 720
@@ -228,9 +231,11 @@ def filltrain(Layout,icon, track , pos):
 
         case 107:
             y_offset = 820
+            x_offset = 330
 
         case 108:
             y_offset = 820
+            x_offset = 330
 
 # MWS Location
     if track in [104,105,106]:
@@ -262,7 +267,7 @@ def filltrain(Layout,icon, track , pos):
                     x_offset = 650
                 case 2: #near ML
                     y_offset = 490
-                    x_offset = 1500        
+                    x_offset = 1480        
 
 #Depot filled
     if icon.shape[2] == 4:
