@@ -235,7 +235,7 @@ def filltrain(Layout,icon, track , pos):
     match track :
         case 301 :
             y_offset = 80
-            x_offset = 550
+            x_offset = 560
         case 302 :
             y_offset = 720
             x_offset = 100
