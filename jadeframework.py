@@ -234,7 +234,7 @@ def filltrain(Layout,icon, track , pos):
             x_offset = 330
 
         case 108:
-            y_offset = 920
+            y_offset = 915
             x_offset = 330
 
 # MWS Location
