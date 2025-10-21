@@ -209,15 +209,15 @@ def filltrain(Layout,icon, track , pos):
 
     match track :
         case 101:
-            y_offset = 720
+            y_offset = 570
             x_offset = 330
         
         case 102:
-            y_offset = 720
+            y_offset = 620
             x_offset = 330
 
         case 103:
-            y_offset = 720
+            y_offset = 670
             x_offset = 330
 
         case 104:
@@ -230,11 +230,11 @@ def filltrain(Layout,icon, track , pos):
             y_offset = 820
 
         case 107:
-            y_offset = 820
+            y_offset = 870
             x_offset = 330
 
         case 108:
-            y_offset = 820
+            y_offset = 920
             x_offset = 330
 
 # MWS Location
