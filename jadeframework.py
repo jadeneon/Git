@@ -231,6 +231,23 @@ def filltrain(Layout,icon, track , pos):
             case 1:
                 x_offset = 1600                
 
+#Special Position
+    match track :
+        case 301 :
+            y_offset = 100
+            x_offset = 500
+        case 302 :
+            y_offset = 720
+            x_offset = 100
+        case 503 :
+            match pos:
+                case 1: #near MWS
+                    y_offset = 720
+                    x_offset = 100
+                case 2: #near ML
+                    y_offset = 720
+                    x_offset = 100        
+
 #Depot filled
     if icon.shape[2] == 4:
         # Split the foreground image into color and alpha channels
@@ -286,7 +303,7 @@ def filltrainML(Layout,icon, track , pos):
         case 11:
             x_offset = 1735 #checked
         case 12:
-            x_offset = 1865
+            x_offset = 1865 
     
     if icon.shape[2] == 4:
         # Split the foreground image into color and alpha channels
