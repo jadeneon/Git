@@ -262,7 +262,7 @@ def filltrain(Layout,icon, track , pos):
                     x_offset = 650
                 case 2: #near ML
                     y_offset = 490
-                    x_offset = 1600        
+                    x_offset = 1500        
 
 #Depot filled
     if icon.shape[2] == 4:
