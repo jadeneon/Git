@@ -213,7 +213,7 @@ def filltrain(Layout,icon, track , pos):
             x_offset = 330
         
         case 102:
-            y_offset = 620
+            y_offset = 625
             x_offset = 330
 
         case 103:
